@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Suraiya ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff4e78,#ff758c,#ff9a9e);
+    color:#fff;
+    overflow:hidden;
+}
+
+/* floating hearts */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    font-size:18px;
+    animation:float 6s linear infinite;
+    opacity:0.7;
+}
+@keyframes float{
+    to{transform:translateY(-110vh);opacity:0}
+}
+
+/* box */
+.box{
+    text-align:center;
+    background:rgba(255,255,255,0.15);
+    padding:30px;
+    border-radius:25px;
+    backdrop-filter:blur(15px);
+    box-shadow:0 15px 50px rgba(0,0,0,0.3);
+    width:90%;
+    max-width:420px;
+}
+
+/* input */
+input{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:20px;
+    outline:none;
+}
+
+/* button */
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:25px;
+    background:#fff;
+    color:#ff4e78;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+button:hover{transform:scale(1.08)}
+
+/* main page */
+#main{
+    display:none;
+    position:absolute;
+    width:100%;
+    height:100%;
+    justify-content:center;
+    align-items:center;
+}
+
+/* card */
+.card{
+    width:90%;
+    max-width:520px;
+    padding:30px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    animation:fadeIn 1.2s ease;
+}
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+h2{margin-bottom:10px}
+
+/* typing */
+.typing{
+    white-space:pre-line;
+    line-height:1.9;
+    font-size:15px;
+}
+
+/* romantic text */
+#romantic{
+    opacity:0;
+    transform:translateY(10px);
+    transition:1s;
+    margin-top:15px;
+}
+
+/* signature */
+.signature{
+    margin-top:20px;
+    font-weight:bold;
+}
+
+/* countdown */
+#countdown{
+    margin-bottom:10px;
+    font-size:14px;
+    opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<!-- login -->
+<div class="box" id="login">
+    <h2>🔐 Only For Love ❤️</h2>
+    <p>Enter the secret of love...</p>
+    <input id="pass" placeholder="Type something with love...">
+    <button onclick="check()">Unlock 💖</button>
+    <p id="error" style="margin-top:10px;color:#ffdede;"></p>
+</div>
+
+<!-- main -->
+<div id="main">
+    <div class="card">
+        <h2>🎂 Happy Birthday Suraiya ❤️</h2>
+        <div id="countdown"></div>
+
+        <div class="typing" id="text"></div>
+
+        <div id="romantic">
+            💌 তুমি আমার জীবনের সবচেয়ে সুন্দর অনুভূতি।  
+            দূরে থেকেও তুমি আমার হৃদয়ের সবচেয়ে কাছের মানুষ।  
+
+            🕊️ ৩ বছর ধরে আমরা একসাথে—  
+            না দেখা হয়েও এত ভালোবাসা সম্ভব, এটা তুমি প্রমাণ করেছো।  
+
+            ❤️ তুমি আমার ভালোবাসা, আমার স্বপ্ন,  
+            আর আমার জীবনের সবচেয়ে মূল্যবান মানুষ।
+        </div>
+
+        <button onclick="reveal()">💖 Reveal My Heart</button>
+
+        <div class="signature">
+            ❤️ তোমার — স্বজন আহমেদ সিহাব
+        </div>
+    </div>
+</div>
+
+<script>
+/* password */
+function check(){
+    let input=document.getElementById("pass").value.toLowerCase().replace(/\s+/g,'');
+
+    const keys=[
+        "love","iloveyou","loveyou","luv",
+        "valobasha","bhalobasha","valobasi","bhalobasi",
+        "ভালোবাসি","ভালবাসি","ভালোবাসা","প্রেম"
+    ];
+
+    if(keys.some(k=>input.includes(k))){
+        document.getElementById("login").style.display="none";
+        document.getElementById("main").style.display="flex";
+        start();
+    }else{
+        document.getElementById("error").innerText="❌ Try something with love...";
+    }
+}
+
+/* start */
+function start(){
+    const today=new Date();
+    const el=document.getElementById("countdown");
+
+    if(today.getDate()===26 && today.getMonth()===3){
+        el.innerHTML="🎉 আজ তার জন্মদিন!";
+    }else{
+        let next=new Date(today.getFullYear(),3,26);
+        if(today>next) next.setFullYear(today.getFullYear()+1);
+        let days=Math.ceil((next-today)/(1000*60*60*24));
+        el.innerHTML="⏳ বাকি "+days+" দিন";
+    }
+
+    const poem=`🌸 শুভ জন্মদিন 🎉
+
+ফুলে ফুলে ভরে যাক তোমার ভুবন,
+🌈 রংধনুর মতো সাত রঙে রাঙুক তোমার জীবন।
+
+💫 দুঃখ-কষ্টগুলো হারিয়ে যাক দূর অজানার দেশে,
+🌊 তোমার জীবন যেন সুখের সাগরে ভাসে।
+
+🙏 এই কামনা করি বিধাতার কাছে—
+তোমার প্রতিটি দিন হোক হাসি, ভালোবাসা আর সাফল্যে ভরা।
+
+🎂 Happy Birthday! ❤️`;
+
+    let i=0;
+    function type(){
+        if(i<poem.length){
+            document.getElementById("text").innerHTML+=poem.charAt(i);
+            i++;
+            setTimeout(type,20);
+        }
+    }
+    type();
+
+    /* hearts */
+    setInterval(()=>{
+        let h=document.createElement("div");
+        h.className="heart";
+        h.innerHTML="💖";
+        h.style.left=Math.random()*100+"vw";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),6000);
+    },400);
+}
+
+/* reveal */
+function reveal(){
+    document.getElementById("romantic").style.opacity=1;
+    document.getElementById("romantic").style.transform="translateY(0)";
+}
+</script>
+
+</body>
+</html>
